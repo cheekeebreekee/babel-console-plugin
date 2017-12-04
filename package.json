@@ -1,0 +1,19 @@
+{
+  "name": "frontcamp-babel-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-console": "webpack;echo '### About to run ./index.js'; node ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.7.2",
+    "babel-loader": "^6.1.0",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^3.5.5"
+  }
+}
