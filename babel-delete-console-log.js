@@ -1,6 +1,14 @@
 "use strict";
 
-module.exports =  function({ types: t }) {
+function isConsoleLog(expression) {
+    const obj = expression.get("object");
+    const prop = expression.get("property");
+    return (
+        obj.isIdentifier({ name: "console" }) && prop.isIdentifier({ name: "log" })
+    );
+}
+
+module.exports = function({ types: t }) {
     return {
         name: "babel-delete-console-log",
         visitor: {
@@ -9,7 +17,7 @@ module.exports =  function({ types: t }) {
 
                 if (!callee.isMemberExpression()) return;
 
-                if (isConsoleLog(callee)) {
+                if (isConsoleLog(callee) === true) {
                     if (path.parentPath.isExpressionStatement()) {
                         path.remove();
                     }
@@ -17,12 +25,4 @@ module.exports =  function({ types: t }) {
             }
         }
     };
-
-    function isConsoleLog(memberExpr) {
-        const object = memberExpr.get("object");
-        const property = memberExpr.get("property");
-        return (
-            object.isIdentifier({ name: "console" }) && property.isIdentifier({ name: "log" })
-        );
-    }
 };
