@@ -6,5 +6,5 @@
       }
     }]
   ],
-  "plugins": ["./babel-delete-console-log.js"]
+  "plugins": ["./src/babel-delete-console-log.js"]
 }
